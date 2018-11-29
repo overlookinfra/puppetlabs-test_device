@@ -1,0 +1,12 @@
+---
+Gemfile:
+  optional:
+    ':development':
+      - gem: 'puppet-resource_api'
+Rakefile:
+  requires:
+    - 'puppet-strings/tasks'
+spec/spec_helper.rb:
+  mock_with: ':rspec'
+.travis.yml:
+  simplecov: true
