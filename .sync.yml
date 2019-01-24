@@ -13,3 +13,7 @@ spec/spec_helper.rb:
   mock_with: ':rspec'
 .travis.yml:
   simplecov: true
+  notifications:
+    email: false
+    slack:
+      secure: EWEbjFCx7p5rqAPDaPkE8nQnZKKMzhlKTL629bphicr7cr+Xfb1pLn/afQmhOxpysnYWbZc3bVcJvh8stj73v/2OmgAmed7WW9EliuPpHYqPRKeajuioKBO5Bh7C9HjNplOfseYFcgOU7TEMuFv3PE2+muLooJIJRX82Mu9VQIgOT8Fn2KlY18GQqjsxKXhzl17qKuD1iNkRQduTpxdcwfBQfm4FZyxdTtaXfL6FMEafOS/VJPmF16xevSyKDuruQc9b/VwOLFTrNlehwhxXVagUmRMBh7yh3U64ZD+cjM1UZqRB1+yAi1rc519f8KPLkprVVCzhuBn/58Yxn6Wtd8Z7h4BOAIyxdasYKLA/B6f6tWDuDi9rxN6uw0amDuLJjuGlCP/LNkBIf+XmUQlcfD33+EUydBqWEAGyyVv2q/J1juPlnnguvsyXnO2FyJElwraXDsUBrPhdQTVwcUGokwttJtnQ3di2Q5naxy/zFsWS+Tv+lu62jVqxz9I0mZOVxvvvL/gS+coe7/iMXWbLKUST/NefNxnn6haQcybbcPSGVivcObjUcDNwcyolHwO5eOyMCgATcIXfAEUGvbXLYcxcrK4olf0A5vBcM7xBd7z7pQAUc3xW4L2OZuNwGvKiCC9QzB7ZvJ9XTFcuGtnYP3fzwmOqa7HcV6YcIQRE9HY=
