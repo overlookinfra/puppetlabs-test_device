@@ -15,6 +15,9 @@
     {
       "name": "puppet",
       "version_requirement": ">= 4.10.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs-ruby_task_helper"
     }
   ],
   "pdk-version": "1.10.0",
