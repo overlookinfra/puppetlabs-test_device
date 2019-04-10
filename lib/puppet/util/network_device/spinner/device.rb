@@ -8,7 +8,7 @@ module Puppet::Util::NetworkDevice::Spinner
       Puppet.info("Spinning for #{cpu_time}s and waiting for #{wait_time}s")
       starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
       while (Process.clock_gettime(Process::CLOCK_MONOTONIC) - starting) < cpu_time
-      str = 'f'
+        str = 'f'
         1000.times do
           str << 'u'
         end
@@ -21,15 +21,20 @@ module Puppet::Util::NetworkDevice::Spinner
       {}
     end
 
+    # rubocop:disable Style/AccessorMethodName
     def get_cpu_time
       (config['get_cpu_time'] || 0).to_f
     end
+
     def get_wait_time
       (config['get_wait_time'] || 0).to_f
     end
+
+    # rubocop:enable Style/AccessorMethodName
     def facts_cpu_time
       (config['facts_cpu_time'] || 0).to_f
     end
+
     def facts_wait_time
       (config['facts_wait_time'] || 0).to_f
     end
