@@ -3,7 +3,11 @@
   "description": "Spin the device",
   "remote": true,
   "supports_noop": false,
+  "input_method": "stdin",
   "parameters": {
   },
-  "files": ["ruby_task_helper/files/task_helper.rb"]
+  "files": [
+    "ruby_task_helper/files/task_helper.rb",
+    "test_device/lib/puppet/util/network_device/spinner/device.rb"
+  ]
 }
