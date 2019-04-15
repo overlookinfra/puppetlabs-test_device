@@ -1,8 +1,8 @@
 #!/opt/puppetlabs/puppet/bin/ruby
 
 require 'puppet'
-require_relative "../../ruby_task_helper/files/task_helper.rb"
-require_relative "../../test_device/lib/puppet/util/network_device/spinner/device.rb"
+require_relative '../../ruby_task_helper/files/task_helper.rb'
+require_relative '../../test_device/lib/puppet/util/network_device/spinner/device.rb'
 
 # validate values.
 def validate_parameters(cpu_time, wait_time)
