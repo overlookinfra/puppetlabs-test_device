@@ -20,6 +20,10 @@ This module contains a test device that only burns CPU and wall clock time to be
 
 Configure an arbitrary amount of devices using the `spinner` type in your `device.conf`. Inthe credentials you can configure extra wait times for fetching facts and retrieving resources as `facts_cpu_time`, `facts_wait_time`, `get_cpu_time` and `get_wait_time`. All times can be specified in fractional seconds.
 
+### Requirement for executing task
+
+The [puppetlabs-ruby_task_helper](https://forge.puppet.com/puppetlabs/ruby_task_helper) module should be installed
+
 ## Usage
 
 * Create a catalog with an appropriate number of `spinner` resources in it.
@@ -27,6 +31,36 @@ Configure an arbitrary amount of devices using the `spinner` type in your `devic
 * Run `puppet device` to execute those catalogs.
 * ???
 * Profit!
+
+### Executing task
+
+The `device_spin` task can be executed from bolt by supplying in an inventory file:
+
+*  A proxy puppet server
+* `name` Name of the device
+* `alias` Alias to use for the device
+* `config` of which:
+  * `transport` Always `remote`
+  * `remote` Credentials of the device, of which
+    * `cpu_time` CPU time to spin
+    * `wait_time` Wait time to spin
+
+For example:
+
+```
+nodes:
+    - name: spinny.puppetlabs.net
+      alias: spinny
+      config:
+        transport: remote
+        remote:
+          cpu_time: 2
+          wait_time: 3
+```
+
+Bolt executes the task with the following command:
+
+`bolt task run test_device::device_spin --nodes spinny --modulepath /etc/puppetlabs/code/environments/production/modules/ --inventoryfile ./inventory.yaml`
 
 ## Limitations
 
