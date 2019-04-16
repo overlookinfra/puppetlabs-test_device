@@ -34,33 +34,28 @@ The [puppetlabs-ruby_task_helper](https://forge.puppet.com/puppetlabs/ruby_task_
 
 ### Executing task
 
-The `device_spin` task can be executed from bolt by supplying in an inventory file:
+The `device_spin` task can be executed from bolt by supplying an basic inventory file:
 
-*  A proxy puppet server
-* `name` Name of the device
+* `name` Name of the device (no used by test_device)
 * `alias` Alias to use for the device
 * `config` of which:
   * `transport` Always `remote`
-  * `remote` Credentials of the device, of which
-    * `cpu_time` CPU time to spin
-    * `wait_time` Wait time to spin
 
 For example:
 
 ```
 nodes:
-    - name: spinny.puppetlabs.net
-      alias: spinny
-      config:
-        transport: remote
-        remote:
-          cpu_time: 2
-          wait_time: 3
+  - name: spinny.puppetlabs.net
+    alias: spinny
+    config:
+      transport: remote
 ```
 
 Bolt executes the task with the following command:
 
-`bolt task run test_device::device_spin --nodes spinny --modulepath /etc/puppetlabs/code/environments/production/modules/ --inventoryfile ./inventory.yaml`
+`bolt task run test_device::device_spin --nodes spinny --modulepath /etc/puppetlabs/code/environments/production/modules/ --inventoryfile ./inventory.yaml  --param '{"cpu_time": 2, "wait_time": 3}'`
+
+Changing the param values of `cpu_time` and `wait_time` will affect the test_device as defined in [device_spin.json](tasks/device_spin.json)
 
 ## Limitations
 

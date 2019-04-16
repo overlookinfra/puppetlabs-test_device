@@ -18,6 +18,17 @@ end
 
 describe 'DeviceSpin task', :bypass_on_less_than_puppet_6 do
   let(:modulepath) { File.join(__dir__, '../../fixtures/modules') }
+  let(:inventory) do
+    {
+      'nodes' => [{
+        'name' => 'spinny.puppetlabs.net',
+        'alias' => 'spinny',
+        'config' => {
+          'transport' => 'remote',
+        },
+      }],
+    }
+  end
 
   let(:bolt_config) do
     { 'modulepath' => modulepath }
@@ -25,85 +36,32 @@ describe 'DeviceSpin task', :bypass_on_less_than_puppet_6 do
 
   include BoltSpec::Run
   it 'runs device spin successfully with correct inputs' do
-    result = run_task('test_device::device_spin', 'spinny', {},
-                      inventory: { 'nodes' => [{
-                        'name' => 'spinny.puppetlabs.net',
-                        'alias' => 'spinny',
-                        'config' => {
-                          'transport' => 'remote',
-                          'remote' => {
-                            'cpu_time' => '2',
-                            'wait_time' => '3',
-                          },
-                        },
-                      }] })
+    result = run_task('test_device::device_spin', 'spinny', { 'cpu_time' => 2, 'wait_time' => 3 }, inventory: inventory)
     expect(result[0]['status']).to eq('success')
     expect(result[0]['result']['results']).to eq('spinner device spun: cpu_time 2, wait_time 3')
   end
 
   it 'returns error without cpu_time' do
-    result = run_task('test_device::device_spin', 'spinny', {},
-                      inventory: { 'nodes' => [{
-                        'name' => 'spinny.puppetlabs.net',
-                        'alias' => 'spinny',
-                        'config' => {
-                          'transport' => 'remote',
-                          'remote' => {
-                            'wait_time' => '3',
-                          },
-                        },
-                      }] })
-    expect(result[0]['status']).to eq('failure')
-    expect(result[0]['result']['_error']['msg']).to eq("Parameter 'cpu_time' not found or contains illegal characters")
+    expect {
+      run_task('test_device::device_spin', 'spinny', { 'wait_time' => 3 }, inventory: inventory)
+    }.to raise_error Bolt::PAL::PALError, %r{expects a value for parameter 'cpu_time'}
   end
 
   it 'returns error with invalid cpu_time' do
-    result = run_task('test_device::device_spin', 'spinny', {},
-                      inventory: { 'nodes' => [{
-                        'name' => 'spinny.puppetlabs.net',
-                        'alias' => 'spinny',
-                        'config' => {
-                          'transport' => 'remote',
-                          'remote' => {
-                            'cpu_time' => 'two',
-                            'wait_time' => '3',
-                          },
-                        },
-                      }] })
-    expect(result[0]['status']).to eq('failure')
-    expect(result[0]['result']['_error']['msg']).to eq("Parameter 'cpu_time' not found or contains illegal characters")
+    expect {
+      run_task('test_device::device_spin', 'spinny', { 'cpu_time' => 'two' }, inventory: inventory)
+    }.to raise_error Bolt::PAL::PALError, %r{arameter 'cpu_time' expects an Integer value, got String}
   end
 
   it 'returns error without wait_time' do
-    result = run_task('test_device::device_spin', 'spinny', {},
-                      inventory: { 'nodes' => [{
-                        'name' => 'spinny.puppetlabs.net',
-                        'alias' => 'spinny',
-                        'config' => {
-                          'transport' => 'remote',
-                          'remote' => {
-                            'cpu_time' => '2',
-                          },
-                        },
-                      }] })
-    expect(result[0]['status']).to eq('failure')
-    expect(result[0]['result']['_error']['msg']).to eq("Parameter 'wait_time' not found or contains illegal characters")
+    expect {
+      run_task('test_device::device_spin', 'spinny', { 'cpu_time' => 2 }, inventory: inventory)
+    }.to raise_error Bolt::PAL::PALError, %r{expects a value for parameter 'wait_time'}
   end
 
   it 'returns error with invalid wait_time' do
-    result = run_task('test_device::device_spin', 'spinny', {},
-                      inventory: { 'nodes' => [{
-                        'name' => 'spinny.puppetlabs.net',
-                        'alias' => 'spinny',
-                        'config' => {
-                          'transport' => 'remote',
-                          'remote' => {
-                            'cpu_time' => '2',
-                            'wait_time' => 'three',
-                          },
-                        },
-                      }] })
-    expect(result[0]['status']).to eq('failure')
-    expect(result[0]['result']['_error']['msg']).to eq("Parameter 'wait_time' not found or contains illegal characters")
+    expect {
+      run_task('test_device::device_spin', 'spinny', { 'wait_time' => 'three' }, inventory: inventory)
+    }.to raise_error Bolt::PAL::PALError, %r{arameter 'wait_time' expects an Integer value, got String}
   end
 end
