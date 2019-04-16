@@ -5,6 +5,14 @@
   "supports_noop": false,
   "input_method": "stdin",
   "parameters": {
+    "cpu_time": {
+      "description": "The amount of cpu time to use up",
+      "type": "Integer"
+    },
+    "wait_time": {
+      "description": "The amount of time to wait",
+      "type": "Integer"
+    }
   },
   "files": [
     "ruby_task_helper/files/task_helper.rb",
