@@ -45,7 +45,7 @@ For example:
 
 ```
 nodes:
-  - name: spinny.puppetlabs.net
+  - name: spinny.example.net
     alias: spinny
     config:
       transport: remote
