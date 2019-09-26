@@ -6,9 +6,9 @@ class Puppet::Provider::SpinnerTransport::SpinnerTransport < Puppet::ResourceApi
     context.transport.spin(context.transport.get_cpu_time, context.transport.get_wait_time)
     (0..999).map do |i|
       {
-          name: i.to_s,
-          ensure: 'present',
-          trigger: false,
+        name: i.to_s,
+        ensure: 'present',
+        trigger: false,
       }
     end
   end

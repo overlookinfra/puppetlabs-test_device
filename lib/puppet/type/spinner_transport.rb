@@ -11,31 +11,31 @@ Puppet::ResourceApi.register_type(
   EOS
   features: [], # 'remote_resource' ],
   attributes: {
-      ensure: {
-          type:    'Enum[present, absent]',
-          desc:    'Whether this resource should be present or absent on the target system.',
-          default: 'present',
-      },
-      name: {
-          type:      'String',
-          desc:      'The name of the resource you want to manage.',
-          behaviour: :namevar,
-      },
-      trigger: {
-          type: 'Boolean',
-          desc: 'Whether or not to trigger a change event for this resource.',
-      },
-      cpu_time: {
-          type: 'Numeric',
-          desc: 'How many seconds of CPU time to burn per resource.',
-          behaviour: :parameter,
-          default: 0,
-      },
-      wait_time: {
-          type: 'Numeric',
-          desc: 'How many seconds of CPU time to sleep per resource.',
-          behaviour: :parameter,
-          default: 0,
-      },
+    ensure: {
+      type:    'Enum[present, absent]',
+      desc:    'Whether this resource should be present or absent on the target system.',
+      default: 'present',
+    },
+    name: {
+      type:      'String',
+      desc:      'The name of the resource you want to manage.',
+      behaviour: :namevar,
+    },
+    trigger: {
+      type: 'Boolean',
+      desc: 'Whether or not to trigger a change event for this resource.',
+    },
+    cpu_time: {
+      type: 'Numeric',
+      desc: 'How many seconds of CPU time to burn per resource.',
+      behaviour: :parameter,
+      default: 0,
+    },
+    wait_time: {
+      type: 'Numeric',
+      desc: 'How many seconds of CPU time to sleep per resource.',
+      behaviour: :parameter,
+      default: 0,
+    },
   },
 )
