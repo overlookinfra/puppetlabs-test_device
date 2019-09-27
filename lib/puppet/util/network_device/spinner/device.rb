@@ -1,5 +1,5 @@
 require 'puppet/util/network_device/simple/device'
-require 'puppet/spinner'
+require_relative '../../../spinner.rb'
 
 module Puppet::Util::NetworkDevice::Spinner
   # This device can be used to emulate interaction with a remote device.

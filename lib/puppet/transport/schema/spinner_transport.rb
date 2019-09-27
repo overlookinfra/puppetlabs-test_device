@@ -24,6 +24,6 @@ can be used to emulate interaction with a remote device.
     facts_wait_time: {
       type: 'Numeric',
       desc: 'facts_wait_time',
-    }
+    },
   },
 )

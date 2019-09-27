@@ -1,3 +1,4 @@
+# common code from spinner device and spinner_transport transport
 module Spinner
   def spin(cpu_time, wait_time)
     Puppet.info("Spinning for #{cpu_time}s and waiting for #{wait_time}s")

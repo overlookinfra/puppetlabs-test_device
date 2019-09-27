@@ -1,4 +1,4 @@
-require_relative '../spinner'
+require_relative '../spinner.rb'
 
 module Puppet::Transport
   # The main connection class to a SpinnerTransport endpoint
