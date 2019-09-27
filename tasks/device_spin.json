@@ -16,6 +16,7 @@
   },
   "files": [
     "ruby_task_helper/files/task_helper.rb",
-    "test_device/lib/puppet/util/network_device/spinner/device.rb"
+    "test_device/lib/puppet/util/network_device/spinner/device.rb",
+    "test_device/lib/puppet/util/network_device/spinner_common.rb"
   ]
 }

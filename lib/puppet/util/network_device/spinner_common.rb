@@ -1,5 +1,5 @@
 # common code from spinner device and spinner_transport transport
-module Spinner
+module SpinnerCommon
   def spin(cpu_time, wait_time)
     Puppet.info("Spinning for #{cpu_time}s and waiting for #{wait_time}s")
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)

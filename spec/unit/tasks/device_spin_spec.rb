@@ -36,9 +36,9 @@ describe 'DeviceSpin task', :bypass_on_less_than_puppet_6 do
 
   include BoltSpec::Run
   it 'runs device spin successfully with correct inputs' do
+    require 'pry'
     result = run_task('test_device::device_spin', 'spinny', { 'cpu_time' => 2, 'wait_time' => 3 }, inventory: inventory)
-    # require 'pry'
-    # binding.pry
+    binding.pry
     expect(result[0]['status']).to eq('success')
     expect(result[0]['result']['results']).to eq('spinner device spun: cpu_time 2, wait_time 3')
   end

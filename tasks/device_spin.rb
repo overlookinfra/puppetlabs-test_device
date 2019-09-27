@@ -3,6 +3,7 @@
 require 'puppet'
 require_relative '../../ruby_task_helper/files/task_helper.rb'
 require_relative '../../test_device/lib/puppet/util/network_device/spinner/device.rb'
+require_relative '../../test_device/lib/puppet/util/network_device/spinner_common.rb'
 
 # Return an error
 def return_error(message)
