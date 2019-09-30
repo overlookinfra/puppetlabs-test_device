@@ -7,7 +7,6 @@ module Puppet::Transport
   # Initialise this transport with a set of credentials
     def initialize(_context, connection_info)
       @config = connection_info
-      puts 'spinner transport'
     end
 
     # Verifies that the stored credentials are valid, and that we can talk to the target

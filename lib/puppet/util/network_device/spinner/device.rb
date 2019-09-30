@@ -8,7 +8,6 @@ module Puppet::Util::NetworkDevice::Spinner
     include SpinnerCommon
     def initialize(config)
       @config = config
-      puts 'spinner device'
     end
   end
 end
