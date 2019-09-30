@@ -12,13 +12,13 @@ module SpinnerCommon
     sleep wait_time
   end
 
-# Set the `facts_cpu_time` and `facts_wait_time` config options to add a one-time cpu and wall clock delay to the spinner facts gathering
+  # Set the `facts_cpu_time` and `facts_wait_time` config options to add a one-time cpu and wall clock delay to the spinner facts gathering
   def facts
     spin(facts_cpu_time, facts_wait_time)
     {}
   end
 
-# rubocop:disable Style/AccessorMethodName
+  # rubocop:disable Style/AccessorMethodName
   def get_cpu_time
     (@config['get_cpu_time'] || 0).to_f
   end
@@ -27,7 +27,7 @@ module SpinnerCommon
     (@config['get_wait_time'] || 0).to_f
   end
 
-# rubocop:enable Style/AccessorMethodName
+  # rubocop:enable Style/AccessorMethodName
   def facts_cpu_time
     (@config['facts_cpu_time'] || 0).to_f
   end

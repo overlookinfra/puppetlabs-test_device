@@ -3,8 +3,8 @@ require 'puppet/util/network_device/spinner_common'
 module Puppet::Transport
   # The main connection class to a SpinnerTransport endpoint
   class SpinnerTransport
-  include SpinnerCommon
-  # Initialise this transport with a set of credentials
+    include SpinnerCommon
+    # Initialise this transport with a set of credentials
     def initialize(_context, connection_info)
       @config = connection_info
     end
